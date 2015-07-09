@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'de.ruedigermoeller:kontraktor:3.03'
+    testCompile 'junit:junit:4.11'
+}
