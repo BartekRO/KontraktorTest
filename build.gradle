@@ -9,5 +9,17 @@ repositories {
 
 dependencies {
     compile 'de.ruedigermoeller:kontraktor:3.03'
+
+    compile 'org.postgresql:postgresql:9.3-1100-jdbc41'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.10.Final'
+    compile 'org.hibernate:hibernate-c3p0:4.3.10.Final'
+    compile 'javax.transaction:jta:1.1'
+    compile 'org.springframework:spring-jdbc:4.1.7.RELEASE'
+    compile 'org.springframework:spring-orm:4.1.7.RELEASE'
+    compile ('org.springframework.data:spring-data-jpa:1.8.1.RELEASE')
+            //{
+    //    exclude module: 'spring-aop'
+  //  }
+    compile 'commons-lang:commons-lang:2.2'
     testCompile 'junit:junit:4.11'
 }

@@ -6,12 +6,14 @@ import org.nustaq.kontraktor.IPromise;
 import org.nustaq.kontraktor.remoting.tcp.TCPConnectable;
 import org.nustaq.kontraktor.util.Log;
 
+import java.util.Random;
+
 /**
  * Created by Bartek on 2015-07-09.
  */
 public class TestClient {
 
-    public static final int NUM_MSG = 2_000_000;
+    public static final int NUM_MSG = 50_000;
 
     public static class ClientActor extends Actor<ClientActor> {
 
@@ -23,13 +25,14 @@ public class TestClient {
             for ( int i = 0; i < NUM_MSG; i++ ) {
                 while ( server.isMailboxPressured() )
                     yield(); // nonblocking wait. else actor thread gets stuck as messages queue up massively
-                server.askSum(i, i + 1).then(res -> {
+                server.askSumLong(i, i + 1).then(res -> {
+//                    System.out.println(res);
                     resCount[0]++;
                 });
             }
             while( resCount[0] < NUM_MSG ) {
                 yield(1000);
-                System.out.println("waiting "+resCount);
+                System.out.println("waiting "+resCount[0]);
             }
             server.print("benchAskSum DONE");
             Log.Info(this, "Done");
